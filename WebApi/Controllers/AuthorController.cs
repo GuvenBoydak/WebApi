@@ -17,10 +17,10 @@ namespace WebApi.Controllers
     public class AuthorController : ControllerBase
     {
 
-        private readonly BookStoreDbContext _db;
+        private readonly IBookStoreDbContext _db;
         private readonly IMapper _mapper;
 
-        public AuthorController(BookStoreDbContext db, IMapper mapper)
+        public AuthorController(IBookStoreDbContext db, IMapper mapper)
         {
             _db = db;
             _mapper = mapper;

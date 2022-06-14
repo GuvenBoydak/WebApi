@@ -14,11 +14,11 @@ namespace WebApi.controllers
     [Route("{controller}s")]
     public class BookController : ControllerBase
     {
-        private readonly BookStoreDbContext _context;
+        private readonly IBookStoreDbContext _context;
         private readonly IMapper _mapper;
 
 
-        public BookController(BookStoreDbContext context, IMapper mapper)
+        public BookController(IBookStoreDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -37,16 +37,17 @@ namespace WebApi.controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            GetByIdQuery getByIdQuery = new GetByIdQuery(_context, _mapper);
+            GetBookDetailQuery query = new GetBookDetailQuery(_context, _mapper);
+            query.id = id;
 
-            getByIdQuery.id = id;
-
+            GetBookDetailViewModel result;
+            
             GetBookDetailValidator validator = new GetBookDetailValidator();
-            validator.ValidateAndThrow(getByIdQuery);
+            validator.ValidateAndThrow(query);
 
-            getByIdQuery.Handler();
+            result = query.Handler();
 
-            return Ok();
+            return Ok(result);
         }
 
         // [HttpGet]
@@ -58,7 +59,7 @@ namespace WebApi.controllers
 
 
         [HttpPost]
-        public IActionResult AddBook([FromBody] CreateBookModel newBooks)
+        public IActionResult AddBook([FromBody] CreateBookModal newBooks)
         {
             CreateBookCommand command = new CreateBookCommand(_context, _mapper);
 
@@ -89,14 +90,14 @@ namespace WebApi.controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteBook(int id)
         {
-            GetByIdQuery query = new GetByIdQuery(_context, _mapper);
+            DeleteBookCommand command =new DeleteBookCommand(_context);
 
-            query.id = id;
+            command.id = id;
 
             DeleteBookCommandValidator validator = new DeleteBookCommandValidator();
-            validator.ValidateAndThrow(query);
+            validator.ValidateAndThrow(command);
 
-            query.Handler();
+            command.Handler();
 
             return Ok();
         }

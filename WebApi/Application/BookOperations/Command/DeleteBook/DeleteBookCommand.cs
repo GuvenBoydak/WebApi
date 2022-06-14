@@ -8,9 +8,9 @@ namespace WebApi.Application.BookOperations.DeleteBook
 
         public int id { get; set; }
 
-        private readonly BookStoreDbContext _db;
+        private readonly IBookStoreDbContext _db;
 
-        public DeleteBookCommand(BookStoreDbContext db)
+        public DeleteBookCommand(IBookStoreDbContext db)
         {
             _db = db;
         }
@@ -19,7 +19,7 @@ namespace WebApi.Application.BookOperations.DeleteBook
         {
             var getBook = _db.Books.SingleOrDefault(x=>x.Id==id);
             if (getBook is null)
-                throw new InvalidOperationException("Silinicek veri bulunamadı");
+                throw new InvalidOperationException("Silinicek Kitap bulunamadı");
 
             _db.Books.Remove(getBook);
             _db.SaveChanges();

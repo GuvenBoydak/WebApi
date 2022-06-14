@@ -9,9 +9,9 @@ namespace WebApi.Application.BookOperations.UpdateBook
         public int id { get; set; }
 
         
-        private readonly BookStoreDbContext _db;
+        private readonly IBookStoreDbContext _db;
 
-        public UpdateBookCommand(BookStoreDbContext db)
+        public UpdateBookCommand(IBookStoreDbContext db)
         {
             _db = db;
         }
@@ -21,7 +21,7 @@ namespace WebApi.Application.BookOperations.UpdateBook
         {
             var getBook=_db.Books.SingleOrDefault(x=>x.Id==id);
              if(getBook is null)
-                throw new InvalidOperationException("Güncellenecek veri bulunamadı!");
+                throw new InvalidOperationException("Güncellenecek Kitap bulunamadı!");
 
             getBook.PageCount = modal.PageCount != default ? modal.PageCount : getBook.PageCount;
             getBook.PublishDate = modal.PublishDate != default ? modal.PublishDate : getBook.PublishDate;

@@ -3,7 +3,7 @@ using WebApi.Application.BookOperations.GetBooksById;
 
 namespace WebApi.Application.BookOperations.DeleteBook
 {
-    public class DeleteBookCommandValidator:AbstractValidator<GetByIdQuery>
+    public class DeleteBookCommandValidator:AbstractValidator<DeleteBookCommand>
     {
         public DeleteBookCommandValidator()
         {

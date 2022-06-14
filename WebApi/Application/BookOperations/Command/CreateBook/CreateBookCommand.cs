@@ -6,13 +6,13 @@ namespace WebApi.Application.BookOperations.CreateBook
 {
     public class CreateBookCommand
     {
-        public CreateBookModel model { get; set; }
+        public CreateBookModal model { get; set; }
 
 
-        private readonly BookStoreDbContext _db;
+        private readonly IBookStoreDbContext _db;
         private readonly IMapper _mapper;
 
-        public CreateBookCommand(BookStoreDbContext db, IMapper mapper)
+        public CreateBookCommand(IBookStoreDbContext db, IMapper mapper)
         {
             _db = db;
             _mapper = mapper;
@@ -22,7 +22,7 @@ namespace WebApi.Application.BookOperations.CreateBook
         {
             var book= _db.Books.SingleOrDefault(x=>x.Title==model.Title);
             if(book is not null)
-                throw new InvalidOperationException("Kitap zaten Mevcut");
+                throw new InvalidOperationException("Kitap zaten Mevcut.");
 
             book = _mapper.Map<Book>(model);
 
@@ -32,7 +32,7 @@ namespace WebApi.Application.BookOperations.CreateBook
         }
     }
 
-    public class CreateBookModel
+    public class CreateBookModal
     {
         public string Title { get; set; }
 

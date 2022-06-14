@@ -4,32 +4,34 @@ using WebApi.DbOperations;
 
 namespace WebApi.Application.BookOperations.GetBooksById
 {
-    public class GetByIdQuery
+    public class GetBookDetailQuery
     {
         public int id { get; set; }
+        public GetBookDetailViewModel modal { get; set; }
 
-        private readonly BookStoreDbContext _db;
+        private readonly IBookStoreDbContext _db;
         private readonly IMapper _mapper;
 
-        public GetByIdQuery(BookStoreDbContext db, IMapper mapper)
+        public GetBookDetailQuery(IBookStoreDbContext db, IMapper mapper)
         {
             _db = db;
             _mapper = mapper;
         }
 
-        public void Handler()
+        public GetBookDetailViewModel Handler()
         {
             var book = _db.Books.Include(x=>x.Genre).FirstOrDefault(x => x.Id == id);
             if (book is null)
                 throw new InvalidOperationException("kitap bulunamadı!!!");
 
-            GetByIdViewModel vm = _mapper.Map<GetByIdViewModel>(book);
+            GetBookDetailViewModel vm = _mapper.Map<GetBookDetailViewModel>(book);
+            return vm;
         }
 
 
     }
 
-    public class GetByIdViewModel
+    public class GetBookDetailViewModel
     {
         public int Id { get; set; }
 
