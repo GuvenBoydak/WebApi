@@ -6,7 +6,7 @@ namespace WebApi.Application.GenreOperations.Command.CreateGenre
 {
     public class CreateGenreCommand
     {
-        public CreateGenreViewModel Model { get; set; }
+        public CreateGenreViewModel Modal { get; set; }
 
         private readonly IBookStoreDbContext _db;
 
@@ -18,12 +18,12 @@ namespace WebApi.Application.GenreOperations.Command.CreateGenre
 
         public void Handler()
         {
-            Genre genre = _db.Genres.SingleOrDefault(x => x.Name == Model.Name);
+            Genre genre = _db.Genres.SingleOrDefault(x => x.Name == Modal.Name);
             if (genre is not null)
                 throw new InvalidOperationException("Kitap Türü Mevcut");
 
             genre = new Genre();
-            genre.Name = Model.Name;
+            genre.Name = Modal.Name;
             _db.Genres.Add(genre);
             _db.SaveChanges();
             

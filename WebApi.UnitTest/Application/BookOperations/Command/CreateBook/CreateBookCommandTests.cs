@@ -10,7 +10,7 @@ using WebApi.DbOperations;
 using WebApi.Entities;
 using WebApi.UnitTest.TestSetup;
 
-namespace WebApi.UnitTest.Application.BookOperations.Commands.CreateBook
+namespace WebApi.UnitTest.Application.BookOperations.Command.CreateBook
 {
     public class CreateBookCommandTests:IClassFixture<CommonTestFixture>
     {
@@ -27,7 +27,7 @@ namespace WebApi.UnitTest.Application.BookOperations.Commands.CreateBook
         public void WhenAlreadyExistBookTitleIsGiven_InvalidOperationException_ShoudBeReturn()
         {
             //arrange (Hazırlık)
-            var book = new Book() { Title = "Test_WhenAlreadyExistBookTitleIsGiven_InvalidOperationException_ShoudBeReturn", PageCount = 1000, PublishDate = new DateTime(1990, 01, 10), GenreId = 1 };
+            Book book = new Book() { Title = "Test_WhenAlreadyExistBookTitleIsGiven_InvalidOperationException_ShoudBeReturn", PageCount = 1000, PublishDate = new DateTime(1990, 01, 10), GenreId = 1 };
             _context.Books.Add(book);
             _context.SaveChanges();
 

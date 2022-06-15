@@ -20,7 +20,7 @@ namespace WebApi.Application.AuthorOperations.Command.UpdateAuthor
         {
             Author author = _db.Authors.SingleOrDefault(x => x.Id == AuthorId);
             if (author is null)
-                throw new InvalidOperationException("Güncellenecek Yazar Bulunamadı!!!");
+                throw new InvalidOperationException("Yazar Bulunamadı!!!");
 
             author.FirstName = Model.FirstName != default ? Model.FirstName : author.FirstName;
             author.LastName = Model.LastName != default ? Model.LastName : author.LastName;

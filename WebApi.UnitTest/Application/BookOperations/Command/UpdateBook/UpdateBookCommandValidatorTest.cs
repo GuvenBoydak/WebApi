@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using WebApi.Application.BookOperations.UpdateBook;
 using WebApi.UnitTest.TestSetup;
 
-namespace WebApi.UnitTest.Application.BookOperations.Commands.UpdateBook
+namespace WebApi.UnitTest.Application.BookOperations.Command.UpdateBook
 {
     public class UpdateBookCommandValidatorTest : IClassFixture<CommonTestFixture>
     {
@@ -58,7 +58,7 @@ namespace WebApi.UnitTest.Application.BookOperations.Commands.UpdateBook
                 GenreId = 1,
                 Title = "Hobbit",
                 PageCount = 1000,
-                PublishDate = DateTime.Now.Date,
+                PublishDate = DateTime.UtcNow.Date,
             };
 
             //act

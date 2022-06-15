@@ -8,13 +8,12 @@ using System.Threading.Tasks;
 using WebApi.Application.BookOperations.DeleteBook;
 using WebApi.UnitTest.TestSetup;
 
-namespace WebApi.UnitTest.Application.BookOperations.Commands.DeleteBook
+namespace WebApi.UnitTest.Application.BookOperations.Command.DeleteBook
 {
     public class DeleteBookCommandValidatorTest : IClassFixture<CommonTestFixture>
     {
         [Theory]
         [InlineData(0)]
-        [InlineData(-1)]
         public void WhenInvalidInputsAreGiven_Validator_SouldBeReturnErrors(int bookId)
         {
             //arrange

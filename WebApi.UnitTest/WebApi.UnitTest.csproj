@@ -29,9 +29,4 @@
     <ProjectReference Include="..\WebApi\WebApi.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Application\AuthorOperations\" />
-    <Folder Include="Application\GenreOperations\" />
-  </ItemGroup>
-
 </Project>

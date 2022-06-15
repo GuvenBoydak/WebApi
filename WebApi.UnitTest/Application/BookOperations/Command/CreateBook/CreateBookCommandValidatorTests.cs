@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using WebApi.Application.BookOperations.CreateBook;
 using WebApi.UnitTest.TestSetup;
 
-namespace WebApi.UnitTest.Application.BookOperations.Commands.CreateBook
+namespace WebApi.UnitTest.Application.BookOperations.Command.CreateBook
 {
     public class CreateBookCommandValidatorTests : IClassFixture<CommonTestFixture>
     {

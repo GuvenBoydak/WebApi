@@ -10,7 +10,7 @@ using WebApi.DbOperations;
 using WebApi.Entities;
 using WebApi.UnitTest.TestSetup;
 
-namespace WebApi.UnitTest.Application.BookOperations.Commands.UpdateBook
+namespace WebApi.UnitTest.Application.BookOperations.Command.UpdateBook
 {
     public class UpdateBookComandTests:IClassFixture<CommonTestFixture>
     {
@@ -29,11 +29,10 @@ namespace WebApi.UnitTest.Application.BookOperations.Commands.UpdateBook
             //arrange 
             int bookId = 5;
 
-            //act
             UpdateBookCommand command = new UpdateBookCommand(_context);
             command.id = bookId;
 
-            //assert
+            //act //assert
             FluentActions
                 .Invoking(() => command.Handler())
                 .Should()

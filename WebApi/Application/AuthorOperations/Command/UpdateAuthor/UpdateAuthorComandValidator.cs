@@ -11,7 +11,7 @@ namespace WebApi.Application.AuthorOperations.Command.UpdateAuthor
             RuleFor(x => x.Model.LastName).NotEmpty();
             RuleFor(x => x.Model.LastName).MinimumLength(2);
             RuleFor(x => x.Model.Birthday.Date).NotEmpty();
-            RuleFor(x => x.Model.Birthday.Date).LessThan(DateTime.UtcNow);
+            RuleFor(x => x.Model.Birthday.Date).LessThan(DateTime.UtcNow.Date);
         }
     }
 }

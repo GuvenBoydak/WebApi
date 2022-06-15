@@ -6,8 +6,8 @@ namespace WebApi.Application.GenreOperations.Command.CreateGenre
     {
         public CreateGenreCommandValidator()
         {
-            RuleFor(x => x.Model.Name).NotEmpty();
-            RuleFor(x => x.Model.Name).MinimumLength(2);
+            RuleFor(x => x.Modal.Name).NotEmpty();
+            RuleFor(x => x.Modal.Name).MinimumLength(2);
         }
     }
 }
