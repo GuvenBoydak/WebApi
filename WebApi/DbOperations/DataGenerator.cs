@@ -33,7 +33,7 @@ namespace WebApi.DbOperations
                         GenreId = 1,
                         PageCount = 200,
                         PublishDate = new DateTime(2001, 05, 12),
-                        AuthorId=1
+                        AuthorId = 1
                     },
                     new Book
                     {
@@ -42,7 +42,7 @@ namespace WebApi.DbOperations
                         GenreId = 2,
                         PageCount = 350,
                         PublishDate = new DateTime(2011, 11, 21),
-                        AuthorId=2
+                        AuthorId = 2
                     },
                     new Book
                     {
@@ -73,6 +73,29 @@ namespace WebApi.DbOperations
                          LastName = "Herbert",
                          Birthday = new DateTime(1920, 10, 08),
                      });
+
+                context.Users.AddRange(
+                  new User()
+                  {
+                      Name = "Güven",
+                      Surname = "Boydak",
+                      Email = "güven@mail.test",
+                      Password = "123",
+                  },
+                  new User()
+                  {
+                      Name = "Aylin",
+                      Surname = "Boydak",
+                      Email = "aylin@mail.test",
+                      Password = "123",
+                  },
+                  new User()
+                  {
+                      Name = "Ali",
+                      Surname = "Boydak",
+                      Email = "ali@mail.test",
+                      Password = "123",
+                  });
 
                 context.SaveChanges();
             }

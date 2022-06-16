@@ -10,7 +10,7 @@ namespace WebApi.UnitTest.TestSetup
 {
     public static class Genres
     {
-        public static void AddGenres(this BookStoreDbContext context)
+        public static void AddUsers(this BookStoreDbContext context)
         {
 
             context.Genres.AddRange(

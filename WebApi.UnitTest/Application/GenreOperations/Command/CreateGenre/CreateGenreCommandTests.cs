@@ -21,7 +21,7 @@ namespace WebApi.UnitTest.Application.GenreOperations.Command.CreateGenre
         }
 
         [Fact]
-        public void WhenAlreadyExistBookGenreTitleIsGiven_InvalidOperationException_ShoudBeReturn()
+        public void WhenAlreadyExistBookGenreIsGiven_InvalidOperationException_ShoudBeReturn()
         {
             //arrange
             Genre genre = new Genre()
